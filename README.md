@@ -11,18 +11,18 @@ Este é um projeto de **Lista de Tarefas (To-Do List)** desenvolvido com **HTML,
 ✅ Botão de **pausar e retomar** o timer  
 ✅ **Remoção automática** da tarefa ao final do tempo  
 ✅ Botão para **excluir tarefas manualmente**  
-✅ **Tarefas salvas no `localStorage`**, mantendo os dados após o recarregamento  
+✅ **Tarefas salvas no `localStorage`**, mantendo os dados após o recarregamento
 
 ---
 
 ## 📚 Aprendizados
 
-- ✅ HTML básico  
-- ✅ CSS básico  
-- ✅ JavaScript básico  
-- ✅ Manipulação do DOM  
-- ✅ Armazenamento no `localStorage`  
-- ✅ Uso de `setInterval()` para timers  
+- ✅ HTML básico
+- ✅ CSS básico
+- ✅ JavaScript básico
+- ✅ Manipulação do DOM
+- ✅ Armazenamento no `localStorage`
+- ✅ Uso de `setInterval()` para timers
 
 ---
 
@@ -35,10 +35,10 @@ Após a remoção de uma tarefa, inicie um **timer de descanso de 5 minutos** an
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **HTML5** → Estrutura da página  
-- **CSS3** → Estilização e layout  
-- **JavaScript (ES6+)** → Funcionalidades da aplicação  
-- **LocalStorage** → Armazenamento das tarefas  
+- **HTML5** → Estrutura da página
+- **CSS3** → Estilização e layout
+- **JavaScript (ES6+)** → Funcionalidades da aplicação
+- **LocalStorage** → Armazenamento das tarefas
 
 ---
 
@@ -50,7 +50,7 @@ Após a remoção de uma tarefa, inicie um **timer de descanso de 5 minutos** an
  ┣ 📜 index.html → Estrutura da página  
  ┣ 📜 styles.css → Estilos visuais  
  ┣ 📜 scripts.js → Lógica da lista de tarefas  
- ┗ 📜 README.md → Documentação do projeto  
+ ┗ 📜 README.md → Documentação do projeto
 
 ---
 
@@ -74,12 +74,3 @@ cd Aula02-Lista-Tarefas
 **Botão direito no arquivo HTML**: "Open with live server"
 
 ---
-
-## 📜 Licença
-
-Este projeto é de código aberto e pode ser utilizado livremente. 🚀  
-Se gostou, dê uma ⭐ no repositório e contribua com melhorias!
-
----
-
-Feito com ❤️ por [Seu Nome](https://github.com/seu-usuario) 🚀
