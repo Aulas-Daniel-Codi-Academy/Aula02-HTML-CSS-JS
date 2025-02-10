@@ -1,0 +1,57 @@
+/* Estilização geral do corpo da página */
+body {
+  font-family: "Cambria"; /* Define a fonte principal */
+  text-align: center; /* Centraliza o conteúdo */
+  background-color: #797979; /* Define a cor de fundo */
+}
+
+/* Estilização do container principal */
+.container {
+  max-width: 400px; /* Define a largura máxima */
+  margin: 50px auto; /* Centraliza o container na tela */
+  padding: 20px; /* Adiciona espaçamento interno */
+  background: white; /* Define a cor de fundo */
+  border-radius: 12px; /* Arredonda as bordas */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve */
+}
+
+/* Estilização do botão */
+button {
+  margin: 10px 0px 0px 10px; /* Espaçamento superior */
+  padding: 8px 12px; /* Espaçamento interno */
+  border: none; /* Remove a borda */
+  background-color: #28a745; /* Define a cor de fundo */
+  color: white; /* Define a cor do texto */
+  cursor: pointer; /* Altera o cursor para indicar ação */
+  border-radius: 3px;
+  font-family: "Lucida Sans";
+}
+
+/* Remove os estilos padrão da lista */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Estilização de cada item da lista */
+li {
+  background: #eee; /* Define o fundo cinza */
+  margin: 5px 0; /* Espaçamento entre itens */
+  padding: 8px; /* Espaçamento interno */
+  border-radius: 5px; /* Arredonda as bordas */
+  display: flex; /* Usa flexbox para organizar os elementos */
+  justify-content: space-between; /* Separa os elementos */
+}
+
+/* Estilização do botão de remover tarefa */
+li button {
+  background: red; /* Define a cor do botão de remoção */
+  color: white; /* Define a cor do texto */
+  border: none; /* Remove a borda */
+  padding: 5px; /* Define um espaçamento interno */
+  cursor: pointer; /* Altera o cursor ao passar o mouse */
+}
+
+input {
+  border-radius: 1px;
+}
