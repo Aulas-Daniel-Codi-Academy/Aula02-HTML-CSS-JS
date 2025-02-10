@@ -9,24 +9,25 @@
 
     <!-- Link para o arquivo CSS externo -->
     <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" href="./public/lista.png" type="img" />
+
+    <!-- Ícone da página (corrigido o type) -->
+    <link rel="icon" href="./public/lista.png" type="image/png" />
   </head>
 
   <body>
     <!-- Container central da aplicação -->
     <div class="container">
-      <!-- Título da lista de tarefas -->
       <h1>Lista de Tarefas</h1>
 
       <!-- Input para inserir novas tarefas -->
       <input
         type="text"
         id="nova-tarefa"
-        placeholder=" Adicione uma nova tarefa"
+        placeholder="Adicione uma nova tarefa"
       />
 
       <!-- Botão que chama a função de adicionar tarefa -->
-      <button onclick="adicionarTarefa()">Adicionar</button>
+      <button onclick="adicionarTarefa()" class="adicionar">Adicionar</button>
 
       <!-- Lista onde as tarefas serão adicionadas dinamicamente -->
       <ul id="lista-tarefas"></ul>

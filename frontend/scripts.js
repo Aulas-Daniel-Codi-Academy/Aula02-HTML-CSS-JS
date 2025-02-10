@@ -1,34 +1,112 @@
-/**
- * Função que adiciona uma nova tarefa à lista
- */
-function adicionarTarefa() {
-  // Obtém o elemento input onde o usuário digita a nova tarefa
-  let input = document.getElementById("nova-tarefa");
+// Array global para armazenar as tarefas
+let tarefas = [];
 
-  // Obtém a lista de tarefas onde os itens serão adicionados
+/**
+ * Carrega tarefas salvas no localStorage ao iniciar
+ */
+window.onload = function () {
+  let tarefasSalvas = localStorage.getItem("tarefas");
+
+  // Se houver tarefas salvas, carrega para a lista
+  if (tarefasSalvas) {
+    tarefas = JSON.parse(tarefasSalvas);
+    tarefas.forEach((tarefa) =>
+      adicionarTarefa(tarefa.texto, tarefa.tempoRestante, false)
+    );
+  }
+};
+
+/**
+ * Adiciona uma nova tarefa com timer e persistência no localStorage
+ */
+function adicionarTarefa(texto = "", tempoRestante = 3000, salvar = true) {
+  let input = document.getElementById("nova-tarefa");
   let lista = document.getElementById("lista-tarefas");
 
-  // Verifica se o campo de entrada não está vazio (evita adicionar tarefas em branco)
-  if (input.value.trim() === "") return;
+  // Se a tarefa for digitada pelo usuário, usa o valor do input
+  if (texto === "") {
+    texto = input.value.trim();
+  }
 
-  // Cria um novo elemento <li> para representar a tarefa
+  if (texto === "") return; // Evita adicionar tarefas vazias
+
   let li = document.createElement("li");
 
-  // Define o conteúdo do <li>, incluindo o texto da tarefa e um botão de remover
-  li.innerHTML = `${input.value} <button onclick="removerTarefa(this)">❌</button>`;
+  // Botão para remover a tarefa manualmente
+  let botaoRemover = document.createElement("button");
+  botaoRemover.textContent = "❌";
+  botaoRemover.classList.add("remover");
+  botaoRemover.onclick = function () {
+    removerTarefa(li, texto);
+  };
 
-  // Adiciona o novo <li> à lista
+  // Botão para pausar/retomar o timer
+  let botaoPausar = document.createElement("button");
+  botaoPausar.textContent = "⏸ Pausar";
+  botaoPausar.classList.add("pausar");
+
+  // Exibição do tempo restante
+  let tempoElemento = document.createElement("span");
+  tempoElemento.className = "timer";
+
+  let pausado = false;
+  let intervalo;
+
+  function atualizarTimer() {
+    if (!pausado) {
+      let minutos = Math.floor(tempoRestante / 60);
+      let segundos = tempoRestante % 60;
+      tempoElemento.textContent = `⏳ ${minutos}:${
+        segundos < 10 ? "0" : ""
+      }${segundos}`;
+
+      if (tempoRestante <= 0) {
+        removerTarefa(li, texto);
+        clearInterval(intervalo);
+      }
+
+      tempoRestante--;
+      salvarTarefas();
+    }
+  }
+
+  intervalo = setInterval(atualizarTimer, 1000);
+
+  botaoPausar.onclick = function () {
+    pausado = !pausado;
+    botaoPausar.textContent = pausado ? "▶ Retomar" : "⏸ Pausar";
+  };
+
+  atualizarTimer();
+
+  // Adiciona elementos na lista
+  li.appendChild(document.createTextNode(texto + " "));
+  li.appendChild(tempoElemento);
+  li.appendChild(botaoPausar);
+  li.appendChild(botaoRemover);
+
   lista.appendChild(li);
 
-  // Limpa o campo de entrada para permitir adicionar outra tarefa
+  if (salvar) {
+    tarefas.push({ texto, tempoRestante });
+    salvarTarefas();
+  }
+
   input.value = "";
 }
 
 /**
- * Função que remove uma tarefa da lista
- * @param {HTMLElement} botao - O botão de remoção clicado
+ * Remove uma tarefa e atualiza o localStorage
  */
-function removerTarefa(botao) {
-  // Remove o elemento <li> correspondente ao botão clicado
-  botao.parentElement.remove();
+function removerTarefa(li, texto) {
+  li.remove();
+  tarefas = tarefas.filter((tarefa) => tarefa.texto !== texto);
+  salvarTarefas();
+}
+
+/**
+ * Salva as tarefas no localStorage
+ */
+function salvarTarefas() {
+  localStorage.setItem("tarefas", JSON.stringify(tarefas));
 }
